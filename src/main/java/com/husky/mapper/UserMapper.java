@@ -12,4 +12,7 @@ public interface UserMapper {
 
     // 根据用户名或电子邮箱查询
     User selectUser(String userOrEmail);
+
+    // 上传和登录的时间修改
+    int UpdateUploadLoginTime(User user);
 }

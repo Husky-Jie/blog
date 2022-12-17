@@ -19,8 +19,15 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
 
+    // 根据用户名或电子邮箱查询
     @Override
     public User queryUser(String userOrEmail) {
         return userMapper.selectUser(userOrEmail);
+    }
+
+    // 上传和登录的时间修改
+    @Override
+    public int PutUploadLoginTime(User user) {
+        return userMapper.UpdateUploadLoginTime(user);
     }
 }

@@ -14,6 +14,23 @@
         <where>
             user_name=#{user_name} or user_email=#{user_email}
         </where>
-        and user_status=1
     </select>
+
+    <update id="UpdateUploadLoginTime" parameterType="com.husky.entity.User">
+        update user
+        <set>
+            <if test="userName != null">user_name = #{userName,jdbcType=VARCHAR},</if>
+            <if test="userPass != null">user_pass = #{userPass,jdbcType=VARCHAR},</if>
+            <if test="userNickname != null">user_nickname = #{userNickname,jdbcType=VARCHAR},</if>
+            <if test="userEmail != null">user_email = #{userEmail,jdbcType=VARCHAR},</if>
+            <if test="userUrl != null">user_url = #{userUrl,jdbcType=VARCHAR},</if>
+            <if test="userAvatar != null">user_avatar = #{userAvatar,jdbcType=VARCHAR},</if>
+            <if test="userLastLoginIp != null">user_last_login_ip = #{userLastLoginIp,jdbcType=VARCHAR},</if>
+            <if test="userRegisterTime != null">user_register_time = #{userRegisterTime,jdbcType=TIMESTAMP},</if>
+            <if test="userLastLoginTime != null">user_last_login_time = #{userLastLoginTime,jdbcType=TIMESTAMP},</if>
+            <if test="userStatus != null">user_status = #{userStatus,jdbcType=INTEGER},</if>
+            <if test="userRole != null">user_role = #{userRole,jdbcType=VARCHAR},</if>
+        </set>
+        where user_id = #{userId,jdbcType=INTEGER}
+    </update>
 </mapper>

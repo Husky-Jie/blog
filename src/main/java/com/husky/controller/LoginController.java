@@ -6,8 +6,15 @@ import com.husky.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,13 +39,28 @@ public class LoginController {
     }
 
     @RequestMapping("/loginVerify")
-    public R<String> loginVerify(String userOrEmail, String password, String rememberme){
-        User user = userService.queryUser(userOrEmail);
+    @ResponseBody
+    public R<User> loginVerify(@RequestParam String username, @RequestParam String password, HttpSession session){
+        User user = userService.queryUser(username);
         if (user == null){
             return R.error("该用户不存在");
         }else {
-
+            if (!password.equals(user.getUserPass())){
+                return R.error("密码错误");
+            }else if (user.getUserStatus()==0){
+                return R.error("该用户已被禁用");
+            }else{
+                session.setAttribute("user",user);
+                user.setUserLastLoginTime(new Date());
+                userService.PutUploadLoginTime(user);
+                System.out.println(new Date());
+            }
         }
-        return null;
+        return R.success(user);
+    }
+
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String admin(){
+        return "index";
     }
 }
