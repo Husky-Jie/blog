@@ -136,10 +136,10 @@
                             dataType: "json",
                             success: function (data) {
                                 if (data.code == 0) {
+                                    alert(data.msg);
+                                } else {
                                     alert('注册成功');
                                     window.location.href = "/login";
-                                } else {
-                                    alert(data.msg);
                                 }
                             },
                             error: function () {

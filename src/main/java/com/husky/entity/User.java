@@ -20,7 +20,7 @@ public class User implements Serializable {
   private String userLastLoginIp;
   private Date userRegisterTime;
   private Date userLastLoginTime;
-  private long userStatus;
+  private Integer userStatus;
   private String userRole;
 
 }

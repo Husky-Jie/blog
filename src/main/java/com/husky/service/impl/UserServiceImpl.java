@@ -30,4 +30,16 @@ public class UserServiceImpl implements UserService {
     public int PutUploadLoginTime(User user) {
         return userMapper.UpdateUploadLoginTime(user);
     }
+
+    // 注册增加用户
+    @Override
+    public int addUser(User user) {
+        return userMapper.insertUser(user);
+    }
+
+    @Override
+    public Integer queryNameOrEmail(String username, String email) {
+        return userMapper.selectNameOrEmail(username,email);
+    }
+
 }

@@ -15,4 +15,10 @@ public interface UserMapper {
 
     // 上传和登录的时间修改
     int UpdateUploadLoginTime(User user);
+
+    // 注册增加用户
+    int insertUser(User user);
+
+    // 查询注册的用户名或邮箱是否存在
+    Integer selectNameOrEmail(String username, String email);
 }

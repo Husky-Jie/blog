@@ -45,7 +45,7 @@
         }
 
         #backtoblog a, #nav a {
-            color: #fff !important;
+            color: #000000 !important;
             font-size: 100%;
             text-align: center;
         }
@@ -86,10 +86,10 @@
                 <input type="password" name="password" id="user_pass" class="input" value="<%=password%>" size="20" required/>
             </label>
         </p>
-        <%--<p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="1" checked /> 记住密码</label></p>--%>
         <p class="submit">
             <input type="button" name="wp-submit" id="submit-btn" class="button button-primary button-large" value="登录" />
-        </p>
+        </p><br>
+        <p id="backtoblog"><a href="/register">没有账号？点击这里</a></p>
     </form>
 
 
@@ -107,7 +107,7 @@
         wp_attempt_focus();
         if(typeof wpOnload=='function')wpOnload();
     </script>
-    <p id="backtoblog"><a href="/register">注册</a></p>
+
 
 </div>
 
