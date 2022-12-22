@@ -125,7 +125,7 @@
                 },
                 done: function (res) {
                     $("#userAvatar").attr("value", res.data.src);
-                    if (res.code > 0) {
+                    if (res.code>0) {
                         return layer.msg('上传失败');
                     }
                 },
