@@ -14,7 +14,7 @@ public interface UserService {
     User queryUser(String userOrEmail);
 
     // 上传和登录的时间修改
-    int PutUploadLoginTime(User user);
+    int PutUser(User user);
 
     // 注册增加用户
     int addUser(User user);

@@ -16,7 +16,7 @@
         </where>
     </select>
 
-    <update id="UpdateUploadLoginTime" parameterType="com.husky.entity.User">
+    <update id="UpdateUser" parameterType="com.husky.entity.User">
         update user
         <set>
             <if test="userName != null">user_name = #{userName,jdbcType=VARCHAR},</if>

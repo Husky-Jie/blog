@@ -25,10 +25,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectUser(userOrEmail);
     }
 
-    // 上传和登录的时间修改
+    // 用户修改
     @Override
-    public int PutUploadLoginTime(User user) {
-        return userMapper.UpdateUploadLoginTime(user);
+    public int PutUser(User user) {
+        return userMapper.UpdateUser(user);
     }
 
     // 注册增加用户

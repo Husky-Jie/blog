@@ -1,22 +1,12 @@
 package com.husky.controller;
 
-import com.husky.common.R;
-import com.husky.common.UploadFile;
 import com.husky.entity.User;
+import com.husky.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,6 +18,9 @@ import java.util.UUID;
 @RequestMapping("/admin")
 public class AdminController {
 
+    @Resource
+    private UserService userService;
+
     // 退出登录
     @RequestMapping("/logout")
     public String logout(HttpSession session){
@@ -37,8 +30,9 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/user/editSubmit", method = RequestMethod.POST)
-    public R<User> editSubmit(){
-        return null;
+    public String editSubmit(User user){
+        userService.PutUser(user);
+        return "redirect:/admin/user";
     }
 
     /*

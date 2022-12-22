@@ -52,7 +52,7 @@ public class LoginController {
             }else{
                 session.setAttribute("user",user);
                 user.setUserLastLoginTime(new Date());
-                userService.PutUploadLoginTime(user);
+                userService.PutUser(user);
                 System.out.println(new Date());
             }
         }
