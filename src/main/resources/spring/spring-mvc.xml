@@ -47,83 +47,10 @@
     <mvc:resources mapping="/plugin/**" location="/resource/assets/plugin/"></mvc:resources>
 
 
-    <!--<mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.HomeResourceInterceptor"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/admin"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.LoginInterceptor"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/**"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.LoginInterceptor"/>
-        </mvc:interceptor>
-
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/page"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/page/**"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/tag"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/tag/**"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/category"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/category/**"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-
-
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/user"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/user/**"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/menu"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/menu/**"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/options"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/options/**"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/link"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/admin/link/**"/>
-            <bean class="com.liuyanzhao.ssm.blog.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
-
-    </mvc:interceptors>-->
+ <mvc:interceptors>
+     <mvc:interceptor>
+         <mvc:mapping path="/admin/**"/>
+         <bean class="com.husky.filter.LoginFilter"/>
+     </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
