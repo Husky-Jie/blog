@@ -1,6 +1,9 @@
 package com.husky.service;
 
+import com.husky.dto.UserDto;
 import com.husky.entity.User;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,4 +24,13 @@ public interface UserService {
 
     // 查询注册的用户名或邮箱是否存在
     Integer queryNameOrEmail(String username, String email);
+
+    // 查询用户
+    List<User> queryUserRole();
+
+    // 根据id查询用户
+    User queryIdUser(Integer id);
+
+    // 根据id删除用户
+    int removeIdUser(Integer id);
 }

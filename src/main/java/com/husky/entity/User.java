@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 public class User implements Serializable {
 
-  private long userId;
+  private Integer userId;
   private String userName;
   private String userPass;
   private String userNickname;

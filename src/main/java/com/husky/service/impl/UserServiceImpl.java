@@ -1,11 +1,13 @@
 package com.husky.service.impl;
 
+import com.husky.dto.UserDto;
 import com.husky.entity.User;
 import com.husky.mapper.UserMapper;
 import com.husky.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -40,6 +42,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer queryNameOrEmail(String username, String email) {
         return userMapper.selectNameOrEmail(username,email);
+    }
+
+    // 根据角色查询用户
+    @Override
+    public List<User> queryUserRole() {
+        return userMapper.selectUserRole();
+    }
+    // 根据id查询用户
+    @Override
+    public User queryIdUser(Integer id) {
+        return userMapper.selectIdUser(id);
+    }
+
+    @Override
+    public int removeIdUser(Integer id) {
+        return userMapper.deleteIdUser(id);
     }
 
 }
