@@ -156,11 +156,11 @@ public class AdminController {
     public String userEdit(@PathVariable Integer id, HttpSession session){
         // 编辑用户的回显用户信息
         User user = userService.queryIdUser(id);
-        session.setAttribute("user",user);
+        session.setAttribute("user01",user);
         return "User/edit";
     }
 
-    @RequestMapping("/user/delete/{id}")
+    @RequestMapping(value = "/user/delete/{id}", method = RequestMethod.POST)
     public String userDelete(@PathVariable Integer id){
         // 根据id删除用户
         userService.removeIdUser(id);
