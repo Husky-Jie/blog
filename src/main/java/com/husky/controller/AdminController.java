@@ -2,8 +2,10 @@ package com.husky.controller;
 
 import com.husky.common.R;
 import com.husky.dto.UserDto;
+import com.husky.entity.Page;
 import com.husky.entity.User;
 import com.husky.service.ArticleService;
+import com.husky.service.PageService;
 import com.husky.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,6 +32,8 @@ public class AdminController {
     private UserService userService;
     @Resource
     private ArticleService articleService;
+    @Resource
+    private PageService pageService;
 
     // 退出登录
     @RequestMapping("/logout")
@@ -77,7 +82,9 @@ public class AdminController {
     }
 
     @RequestMapping("/page")
-    public String page(){
+    public String page(HttpSession session){
+        List<Page> pageList = pageService.queryAllPage();
+        session.setAttribute("pageList", pageList);
         return "Page/index";
     }
 
@@ -165,5 +172,33 @@ public class AdminController {
         // 根据id删除用户
         userService.removeIdUser(id);
         return "redirect:/admin/user";
+    }
+
+    @RequestMapping("/page/edit/{id}")
+    public String pageEdit(@PathVariable Integer id, HttpSession session){
+        Page page = pageService.queryIdPage(id);
+        session.setAttribute("page", page);
+        return "Page/edit";
+    }
+
+    @RequestMapping(value = "/page/editSubmit", method = RequestMethod.POST)
+    public String pageEditSubmit(Page page) {
+        page.setPageUpdateTime(new Date());
+        pageService.putIdPage(page);
+        return "redirect:/admin/page";
+    }
+
+    @RequestMapping(value = "/page/insertSubmit", method = RequestMethod.POST)
+    public String pageInsertSubmit(Page page) {
+        page.setPageCreateTime(new Date());
+        page.setPageStatus(1);
+        pageService.addPage(page);
+        return "redirect:/admin/page";
+    }
+
+    @RequestMapping("/page/delete/{id}")
+    public String pageDelete(@PathVariable Integer id){
+        pageService.removeIdPage(id);
+        return "redirect:/admin/page";
     }
 }
