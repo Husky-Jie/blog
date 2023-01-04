@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.husky.mapper.ArticleCategoryRefMapper">
+
+    <!--统计分类文章的数量
+    Integer CountArticleCategoryId(Integer id);-->
+    <select id="selectCountArticleCategoryId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select count(*) from
+        article_category_ref
+        where category_id = #{value}
+    </select>
+</mapper>
