@@ -82,4 +82,13 @@ public class UserController {
         userService.removeIdUser(id);
         return "redirect:/admin/user";
     }
+
+    @RequestMapping("/user/insertSubmit")
+    public String userInsertSubmit(User user){
+        user.setUserRegisterTime((new Date()));
+        user.setUserRole("user");
+        user.setUserStatus(1);
+        userService.addUser(user);
+        return "redirect:/admin/user";
+    }
 }

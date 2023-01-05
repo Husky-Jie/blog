@@ -33,4 +33,5 @@ public interface UserMapper {
 
     // 根据id删除用户
     int deleteIdUser(Integer id);
+
 }

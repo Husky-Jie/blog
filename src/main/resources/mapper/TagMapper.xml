@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.husky.mapper.TagMapper">
+    <sql id="Base_Column_List" >
+        tag_id, tag_name, tag_description
+    </sql>
+
+    <!--查询所有标签
+    List<Tag> selectTag();-->
+    <select id="selectTag" resultType="com.husky.entity.Tag">
+        select <include refid="Base_Column_List"/>
+        from tag
+    </select>
+
+    <!--添加标签
+    Integer insertTag(Tag tag);-->
+    <insert id="insertTag" parameterType="com.husky.entity.Tag">
+        insert into tag
+        (tag_name, tag_description)
+        values (#{tagName,jdbcType=VARCHAR}, #{tagDescription,jdbcType=VARCHAR})
+    </insert>
+
+    <!--// 根据id回显编辑标签
+    Tag selectTagId(Integer id);
+    -->
+    <select id="selectTagId" parameterType="Integer" resultType="com.husky.entity.Tag">
+        select <include refid="Base_Column_List"/>
+        from tag
+        where tag_id=#{tagId, jdbcType=INTEGER}
+    </select>
+
+    <!--
+    // 根据id修改标签
+    Integer updateTagId(Tag tag);-->
+    <update id="updateTagId" parameterType="com.husky.entity.Tag">
+        update tag
+        <set >
+            <if test="tagName != null" >
+                tag_name = #{tagName,jdbcType=VARCHAR},
+            </if>
+            <if test="tagDescription != null" >
+                tag_description = #{tagDescription,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where tag_id = #{tagId,jdbcType=INTEGER}
+    </update>
+
+    <!--// 根据id删除标签
+    Integer deleteTagId(Integer id);-->
+    <delete id="deleteTagId" parameterType="Integer">
+        delete from tag
+        where tag_id = #{tagId,jdbcType=INTEGER}
+    </delete>
+</mapper>
